@@ -17,8 +17,8 @@ def calculate_score(cards_list):
 
 def compare(computer_score, user_score):
     """Compares the sum values of two lists according to Blackjack rules."""
-    print(f"Computer: {computer_cards} = {sum(computer_cards)}")
-    print(f"User: {user_cards} = {sum(user_cards)}")
+    print(f"Computer's final hand: {computer_cards} = {sum(computer_cards)}")
+    print(f"User's final hand: {user_cards} = {sum(user_cards)}")
     if computer_score == user_score:
         print("Its a draw.")
     elif computer_score == 0:
