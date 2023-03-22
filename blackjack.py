@@ -6,7 +6,8 @@ def deal_card():
     return random.choice(cards)
 
 def calculate_score(cards_list):
-    """Calculate Blackjack score by sum of card values in a list."""
+    """Calculate score by sum of card values in a list. Automatically turn Ace to '1' if necessary. 
+    Return a value of '0' when sum equals 21 as a Blackjack win."""
     total = sum(cards_list)
     if total == 21:
         return 0
@@ -16,7 +17,7 @@ def calculate_score(cards_list):
     return sum(cards_list)
 
 def compare(computer_score, user_score):
-    """Compares the sum values of two lists according to Blackjack rules."""
+    """Display and compare the sum values of two lists according to Blackjack rules and produce a winner."""
     print(f"Computer's final hand: {computer_cards} = {sum(computer_cards)}")
     print(f"User's final hand: {user_cards} = {sum(user_cards)}")
     if computer_score == user_score:
@@ -50,7 +51,7 @@ while playing_game:
 
     user_score = calculate_score(user_cards)
     computer_score = calculate_score(computer_cards)
-    if ((user_score or computer_score) == 0 ) or ((user_score or computer_score) > 21 ):
+    if user_score == 0 :
         game_stop = True
     print(f"Computer: [{computer_cards[0]}, ?] = ?")
     print(f"User: {user_cards} = {sum(user_cards)}")
@@ -61,7 +62,6 @@ while playing_game:
         if user_continue == "y":
             user_cards.append(deal_card())
             user_score = calculate_score(user_cards)
-            computer_score = calculate_score(computer_cards)
             if (user_score== 0 ) or (user_score > 21 ):
                 game_stop = True
             else:
