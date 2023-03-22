@@ -34,6 +34,8 @@ def compare(computer_score, user_score):
 playing_game = True
 
 while playing_game:
+    print("Welcome to Blackjack!")
+
     user_cards = []
     computer_cards = []
     user_cards.append(deal_card())
@@ -54,15 +56,14 @@ while playing_game:
         user_continue = input("Do you want to draw another card? 'y' or 'n': ")
         if user_continue == "y":
             user_cards.append(deal_card())
+            user_score = calculate_score(user_cards)
+            computer_score = calculate_score(computer_cards)
+            if (user_score== 0 ) or (user_score > 21 ):
+                game_stop = True
+            else:
+                print(f"Computer: [{computer_cards[0]}, ?] = ?")
+                print(f"User: {user_cards} = {sum(user_cards)}")
         else: game_stop = True
-        
-        user_score = calculate_score(user_cards)
-        computer_score = calculate_score(computer_cards)
-        if (user_score== 0 ) or (user_score > 21 ):
-            game_stop = True
-        print(f"Computer: {computer_cards[0]}")
-        print(f"User: {user_cards} = {sum(user_cards)}")
-
 
     while 0 < computer_score < 17:
         computer_cards.append(deal_card())
