@@ -1,10 +1,12 @@
 import random
 
 def deal_card():
+    """Return a random card."""
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10 ,10]
     return random.choice(cards)
 
 def calculate_score(cards_list):
+    """Calculate Blackjack score by sum of card values in a list."""
     total = sum(cards_list)
     if total == 21:
         return 0
@@ -14,6 +16,7 @@ def calculate_score(cards_list):
     return sum(cards_list)
 
 def compare(computer_score, user_score):
+    """Compares the sum values of two lists according to Blackjack rules."""
     print(f"Computer: {computer_cards} = {sum(computer_cards)}")
     print(f"User: {user_cards} = {sum(user_cards)}")
     if computer_score == user_score:
@@ -38,10 +41,11 @@ while playing_game:
 
     user_cards = []
     computer_cards = []
-    user_cards.append(deal_card())
-    user_cards.append(deal_card())
-    computer_cards.append(deal_card())
-    computer_cards.append(deal_card())
+
+    for repeat in range(2):
+        user_cards.append(deal_card())
+        computer_cards.append(deal_card())
+        
     game_stop = False
 
     user_score = calculate_score(user_cards)
